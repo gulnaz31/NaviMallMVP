@@ -1,0 +1,588 @@
+/* ===== БАЗА ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+  background: #f5f5f7;
+  color: #111827;
+}
+
+/* корневой контейнер */
+#root {
+  min-height: 100vh;
+}
+
+/* ===== ОБЩИЙ ЛЕЙАУТ ===== */
+.App {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+}
+
+.app-shell {
+  width: 100%;
+  max-width: 1120px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* ===== СКРИН ВЫБОРА ТРЦ ===== */
+.selector-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: linear-gradient(135deg, #e5f3ff 0%, #f9fafb 50%, #f5f5f7 100%);
+}
+
+.selector-card {
+  width: 100%;
+  max-width: 420px;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 24px 22px 20px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+}
+
+.selector-title {
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin: 0 0 4px;
+  color: #0f172a;
+}
+
+.selector-sub {
+  margin: 0 0 14px;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.selector-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.selector-mall {
+  width: 100%;
+  border-radius: 18px;
+  padding: 10px 12px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.12s ease, border-color 0.15s ease,
+    box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+.selector-mall:hover {
+  transform: translateY(-1px);
+  border-color: #2563eb;
+  background: #f9fafb;
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
+}
+
+.selector-mall-logo {
+  font-size: 2.1rem;
+}
+
+.selector-mall-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.selector-mall-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.selector-mall-address {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.selector-mall-hours {
+  font-size: 0.78rem;
+  color: #16a34a;
+}
+
+/* ===== КНОПКА НАЗАД ===== */
+.back-btn {
+  align-self: flex-start;
+  padding: 4px 0;
+  border: none;
+  background: none;
+  color: #6b7280;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  color: #111827;
+}
+
+/* ===== ШАПКА ТРЦ ===== */
+.mall-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.06);
+}
+
+.mall-logo {
+  font-size: 2.4rem;
+}
+
+.mall-info-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.mall-info-sub {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.mall-info-hours {
+  font-size: 0.78rem;
+  color: #16a34a;
+  margin-top: 3px;
+}
+
+/* ===== ПЕРЕКЛЮЧАТЕЛЬ VIEW (MAP/LIST) ===== */
+.view-switch {
+  display: inline-flex;
+  padding: 2px;
+  border-radius: 999px;
+  background: #e5e7eb;
+  border: 1px solid #d1d5db;
+}
+
+.view-switch button {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 0.85rem;
+  padding: 6px 16px;
+  border-radius: 999px;
+  color: #4b5563;
+  cursor: pointer;
+}
+
+.view-switch button.active {
+  background: #2563eb;
+  color: #f9fafb;
+}
+
+/* ===== ФИЛЬТРЫ ===== */
+.filters-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 12px 14px;
+  border: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.04);
+}
+
+.filters-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 12px;
+  border: 1px solid #d1d5db;
+  background: #f9fafb;
+  padding: 6px 8px;
+}
+
+.filters-search-icon {
+  font-size: 1.1rem;
+  color: #9ca3af;
+}
+
+.filters-search input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #111827;
+  font-size: 0.9rem;
+}
+
+.filters-search input::placeholder {
+  color: #9ca3af;
+}
+
+.filters-chips {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+}
+
+.filters-chip {
+  white-space: nowrap;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  color: #374151;
+  font-size: 0.8rem;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.filters-chip--active {
+  background: #2563eb;
+  color: #f9fafb;
+  border-color: #2563eb;
+}
+
+/* ===== ЛЕЙАУТ КОНТЕНТА ===== */
+.main-grid {
+  display: grid;
+  gap: 18px;
+}
+
+@media (min-width: 900px) {
+  .main-grid {
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  }
+}
+
+/* ===== MAP CARD ===== */
+.map-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 14px 16px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.06);
+}
+
+.map-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.map-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.map-subtitle {
+  font-size: 0.78rem;
+  color: #6b7280;
+}
+
+.map-floor-info {
+  text-align: right;
+}
+
+.map-floor-label {
+  font-size: 0.7rem;
+  color: #9ca3af;
+}
+
+.map-floor-name {
+  font-size: 0.82rem;
+  color: #2563eb;
+}
+
+/* ПЕРЕКЛЮЧАТЕЛЬ ЭТАЖЕЙ (пассивный пока, для UI) */
+.floors-switch {
+  margin-top: 10px;
+  display: inline-flex;
+  gap: 4px;
+  padding: 2px;
+  border-radius: 999px;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+}
+
+.floor-chip {
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: #4b5563;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  cursor: default;
+}
+
+.floor-chip--active {
+  background: #e5f0ff;
+  color: #1d4ed8;
+}
+
+/* СЕТКА КАРТЫ */
+.map-grid {
+  margin-top: 12px;
+  background: #f9fafb;
+  border-radius: 18px;
+  padding: 10px;
+  border: 1px solid #e5e7eb;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.map-cell {
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
+  font-size: 0.65rem;
+  border: 1px solid #d4d4ff;
+  background: #eef2ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #111827;
+}
+
+.map-cell--entrance {
+  background: #bbf7d0;
+  border-color: #22c55e;
+  color: #065f46;
+  font-weight: 600;
+}
+
+.map-cell--shop {
+  background: #fed7aa;
+  border-color: #f97316;
+  color: #7c2d12;
+  font-weight: 600;
+}
+
+.map-cell--route {
+  background: #bfdbfe;
+  border-color: #60a5fa;
+}
+
+/* ЛЕГЕНДА */
+.map-legend {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 0.72rem;
+  color: #6b7280;
+}
+
+.map-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.map-legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+}
+
+/* ТЕКСТОВЫЙ МАРШРУТ */
+.route-box {
+  margin-top: 10px;
+  border-radius: 14px;
+  padding: 10px 12px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  font-size: 0.78rem;
+  color: #374151;
+}
+
+.route-title {
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #111827;
+}
+
+.route-list {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.route-list li {
+  margin-bottom: 2px;
+}
+
+.route-shop-name {
+  color: #2563eb;
+}
+
+/* ===== СПИСОК МАГАЗИНОВ ===== */
+.shops-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 14px 16px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.06);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.shops-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.shops-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.shops-subtitle {
+  font-size: 0.78rem;
+  color: #6b7280;
+}
+
+.shops-total {
+  font-size: 0.72rem;
+  color: #6b7280;
+}
+
+.shops-list {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-right: 4px;
+}
+
+.shops-empty {
+  border-radius: 14px;
+  border: 1px dashed #d1d5db;
+  padding: 10px;
+  font-size: 0.78rem;
+  text-align: center;
+  color: #6b7280;
+}
+
+.shop-card {
+  border-radius: 14px;
+  padding: 10px 12px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease,
+    transform 0.12s ease, background-color 0.18s ease;
+}
+
+.shop-card:hover {
+  border-color: #2563eb;
+  background: #f9fafb;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+}
+
+.shop-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.shop-name {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: #0f172a;
+}
+
+.shop-meta {
+  font-size: 0.76rem;
+  color: #6b7280;
+}
+
+.shop-desc {
+  font-size: 0.76rem;
+  color: #4b5563;
+  margin-top: 2px;
+}
+
+.shop-side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  font-size: 0.74rem;
+  color: #6b7280;
+}
+
+.shop-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #ecfdf5;
+  border: 1px solid #bbf7d0;
+  color: #166534;
+}
+
+.shop-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #22c55e;
+}
+
+/* ===== FOOTER NOTE ===== */
+.footer-note {
+  font-size: 0.72rem;
+  color: #9ca3af;
+  margin-top: 4px;
+}
+
+/* ===== АДАПТИВ ===== */
+@media (max-width: 600px) {
+  .mall-header {
+    align-items: flex-start;
+  }
+
+  .mall-logo {
+    font-size: 2.1rem;
+  }
+
+  .shops-card,
+  .map-card {
+    padding: 12px 12px;
+  }
+
+  .shop-card {
+    padding: 8px 10px;
+  }
+}
